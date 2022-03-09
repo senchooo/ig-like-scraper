@@ -5,12 +5,13 @@ import time
 import os
 
 url = 'https://www.instagram.com/graphql/query/'
-short_code = input('enter your source code: ')
 
+short_code = input('enter your source code: ')
 end_crusor = ''
+
 count = 0
 start_file = 1
-per_file = 10000
+per_file = 250
 
 try:
     os.mkdir('resultfile')
@@ -33,7 +34,7 @@ while True:
         'variables': json.dumps(variabel)
     }
     # to handling status code 429: too many request, head use cookie dan use sesionid
-    head = {'cookie': 'sessionid=19461603210%3AiiKVugLAG4D4mB%3A9'}
+    head = {'cookie': 'sessionid=48309527837%3ABcbw2W9H0yNjEb%3A22'}
 
     req = requests.get(url, headers=head, params=params).json()
 
@@ -72,3 +73,5 @@ while True:
 
     # to handling limitation, then a time lag is given if it fails to retrieve data
     time.sleep(2)
+
+print(f'total data is {count}')
