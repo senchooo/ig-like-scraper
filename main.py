@@ -32,16 +32,16 @@ while True:
         'query_hash': 'd5d763b1e2acf209d62d22d184488e57',
         'variables': json.dumps(variabel)
     }
-    # untuk mengataasi status code 429: too many request, head menggunakan cookie dan ambil sesionid nya
-    head = {'cookie': 'sessionid=48309527837%3AOheC1jResji5V7%3A25'}
+    # to handling status code 429: too many request, head use cookie dan use sesionid
+    head = {'cookie': 'sessionid=19461603210%3AiiKVugLAG4D4mB%3A9'}
 
     req = requests.get(url, headers=head, params=params).json()
 
-    # untuk handling limitasi, maka kasih jeda waktu jika gagal mengambil data
+    # to handling limitation, then a time lag is given if it fails to retrieve data
     try:
         user = req['data']['shortcode_media']['edge_liked_by']['edges']
     except:
-        print('wait for 20 sec')
+        print('wait for 30 sec')
         time.sleep(30)
         continue
 
@@ -70,5 +70,5 @@ while True:
     if not has_next_page:
         break
 
-    # untuk handling limitasi, maka kasih jeda waktu
+    # to handling limitation, then a time lag is given if it fails to retrieve data
     time.sleep(2)
